@@ -5,13 +5,15 @@ import { motion } from "framer-motion";
 export default function Resume() {
   const [darkMode, setDarkMode] = useState(true);
 
+  const phone = "09166197403";
+  const whatsappLink = "https://wa.me/2349166197403";
+
   // ---------------- PDF GENERATOR ----------------
   const generatePDF = () => {
     const pdf = new jsPDF("p", "mm", "a4");
 
     let y = 20;
 
-    // NAME
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(18);
     pdf.text("Gbadebo Wale", 20, y);
@@ -22,7 +24,7 @@ export default function Resume() {
     pdf.text("Frontend-Focused Full-Stack Developer", 20, y);
 
     y += 5;
-    pdf.text("Lagos, Nigeria | gbadebo.wale004@gmail.com", 20, y);
+    pdf.text(`Lagos, Nigeria | ${phone} | gbadebo.wale004@gmail.com`, 20, y);
 
     y += 5;
     pdf.setTextColor(0, 102, 204);
@@ -33,7 +35,6 @@ export default function Resume() {
     pdf.setTextColor(0, 0, 0);
     y += 10;
 
-    // SUMMARY
     pdf.setFont("helvetica", "bold");
     pdf.text("PROFESSIONAL SUMMARY", 20, y);
 
@@ -41,31 +42,27 @@ export default function Resume() {
     pdf.setFont("helvetica", "normal");
     pdf.setFontSize(10);
     pdf.text(
-      "Frontend-focused full-stack developer with hands-on experience building scalable and responsive web applications using React, Node.js, and MongoDB. Strong in UI implementation, API integration, and delivering user-centered solutions.",
+      "Frontend-focused full-stack developer building scalable and responsive web applications using React, Node.js, and MongoDB.",
       20,
       y,
-      { maxWidth: 170 }
+      { maxWidth: 170 },
     );
 
     y += 14;
 
-    // SKILLS
     pdf.setFont("helvetica", "bold");
     pdf.text("TECHNICAL SKILLS", 20, y);
 
     y += 6;
     pdf.setFont("helvetica", "normal");
-    pdf.text("Frontend: React, JavaScript, Tailwind CSS, HTML, CSS", 20, y);
-    y += 5;
-    pdf.text("Backend: Node.js, Express", 20, y);
-    y += 5;
-    pdf.text("Database: MongoDB", 20, y);
-    y += 5;
-    pdf.text("Tools: Git, Postman", 20, y);
+    pdf.text(
+      "React, JavaScript, Tailwind CSS, Node.js, MongoDB, Express",
+      20,
+      y,
+    );
 
     y += 12;
 
-    // PROJECTS
     pdf.setFont("helvetica", "bold");
     pdf.text("PROJECTS", 20, y);
 
@@ -77,11 +74,10 @@ export default function Resume() {
     pdf.setFont("helvetica", "normal");
 
     const projectPoints = [
-      "Developed a full-stack task management application with JWT authentication",
-      "Built RESTful APIs for task creation, updates, and deletion",
-      "Designed responsive UI using React and Tailwind CSS",
-      "Integrated frontend and backend for seamless data flow",
-      "Improved user workflow with structured task management",
+      "Built full-stack task manager with authentication (JWT)",
+      "Created REST APIs for CRUD operations",
+      "Designed responsive UI with React + Tailwind",
+      "Integrated frontend and backend seamlessly",
     ];
 
     projectPoints.forEach((point) => {
@@ -89,46 +85,18 @@ export default function Resume() {
       y += 5;
     });
 
-    y += 6;
-    pdf.setTextColor(0, 102, 204);
-    pdf.textWithLink("GitHub Project Link", 20, y, {
-      url: "https://github.com/Tbrainyz",
-    });
-
-    pdf.setTextColor(0, 0, 0);
     y += 10;
 
-    // EXPERIENCE
     pdf.setFont("helvetica", "bold");
     pdf.text("EXPERIENCE", 20, y);
 
     y += 6;
     pdf.setFont("helvetica", "normal");
-
-    const expPoints = [
-      "Developed and deployed responsive web applications",
-      "Integrated APIs and improved frontend performance",
-      "Built scalable UI components with clean architecture",
-      "Translated ideas into functional web solutions",
-    ];
-
-    expPoints.forEach((point) => {
-      pdf.text(`• ${point}`, 20, y);
-      y += 5;
-    });
-
-    y += 8;
-
-    // EDUCATION
-    pdf.setFont("helvetica", "bold");
-    pdf.text("EDUCATION", 20, y);
-
-    y += 6;
-    pdf.setFont("helvetica", "normal");
     pdf.text(
-      "Full-Stack Development Program — Tech Studio Academy (2025)",
+      "Freelance Developer building responsive web apps, API integration, and UI optimization.",
       20,
-      y
+      y,
+      { maxWidth: 170 },
     );
 
     pdf.save("Gbadebo_Wale_Resume.pdf");
@@ -136,12 +104,19 @@ export default function Resume() {
 
   // ---------------- UI ----------------
   return (
-    <div className={darkMode ? "bg-[#050816] text-white min-h-screen" : "bg-gray-50 text-gray-900 min-h-screen"}>
+    <div
+      className={
+        darkMode
+          ? "bg-[#050816] text-white min-h-screen"
+          : "bg-gray-50 text-gray-900 min-h-screen"
+      }
+    >
       <div className="max-w-6xl mx-auto px-6 py-10">
-
         {/* NAV */}
         <div className="flex justify-between items-center mb-10">
-          <h1 className="text-sm tracking-widest opacity-60">WALE • DEV PORTFOLIO</h1>
+          <h1 className="text-sm tracking-widest opacity-60">
+            WALE • DEV PORTFOLIO
+          </h1>
 
           <div className="flex gap-3">
             <button
@@ -168,16 +143,26 @@ export default function Resume() {
         >
           <div className="relative z-10">
             <h1 className="text-5xl font-bold">Gbadebo Wale</h1>
-            <p className="text-lg opacity-90 mt-2">Frontend-Focused Full-Stack Developer</p>
-            <p className="text-sm opacity-80 mt-1">Lagos, Nigeria • gbadebo.wale004@gmail.com</p>
+            <p className="text-lg opacity-90 mt-2">
+              Frontend-Focused Full-Stack Developer
+            </p>
+            <p className="text-sm opacity-80 mt-1">Lagos, Nigeria • {phone}</p>
 
-            <div className="mt-6 flex gap-3">
+            <div className="mt-6 flex gap-3 flex-wrap">
               <a
                 href="https://github.com/Tbrainyz"
                 target="_blank"
                 className="bg-white text-black px-4 py-2 rounded-xl text-sm font-semibold"
               >
                 GitHub
+              </a>
+
+              <a
+                href={whatsappLink}
+                target="_blank"
+                className="bg-green-500 text-white px-4 py-2 rounded-xl text-sm font-semibold"
+              >
+                WhatsApp Me
               </a>
 
               <a
@@ -194,12 +179,13 @@ export default function Resume() {
 
         {/* GRID */}
         <div className="grid md:grid-cols-3 gap-6 mt-10">
-
           {/* ABOUT */}
           <div className="md:col-span-2 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6">
             <h2 className="text-lg font-semibold mb-3">About Me</h2>
             <p className="text-sm opacity-80">
-              I build modern, scalable and high-performance web applications with a strong focus on frontend experience, clean architecture, and user-centered design.
+              I build modern, scalable and high-performance web applications
+              with strong focus on frontend experience, clean architecture, and
+              user-centered design.
             </p>
           </div>
 
@@ -207,22 +193,32 @@ export default function Resume() {
           <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6">
             <h2 className="text-lg font-semibold mb-3">Skills</h2>
             <div className="flex flex-wrap gap-2">
-              {["React", "JavaScript", "Tailwind", "Node.js", "MongoDB", "Express"].map((s) => (
-                <span key={s} className="bg-white/10 px-3 py-1 rounded-full text-xs">
+              {[
+                "React",
+                "JavaScript",
+                "Tailwind",
+                "Node.js",
+                "MongoDB",
+                "Express",
+              ].map((s) => (
+                <span
+                  key={s}
+                  className="bg-white/10 px-3 py-1 rounded-full text-xs"
+                >
                   {s}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* SERVICES */}
+          {/* SERVICES (SUBTLE INCOME BOOST) */}
           <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6">
             <h2 className="text-lg font-semibold mb-3">Services</h2>
             <ul className="text-sm opacity-80 space-y-2">
-              <li>• Frontend Development (React UI)</li>
+              <li>• Frontend Development</li>
               <li>• Full-Stack Web Apps</li>
               <li>• API Integration</li>
-              <li>• Responsive Website Design</li>
+              <li>• Responsive UI Design</li>
             </ul>
           </div>
 
@@ -231,32 +227,60 @@ export default function Resume() {
             <h2 className="text-lg font-semibold mb-3">Featured Project</h2>
             <h3 className="font-semibold">Task Manager App</h3>
             <p className="text-sm opacity-80 mt-1">
-              Full-stack application with authentication, CRUD operations, and real-time task tracking.
+              Full-stack app with authentication, CRUD operations, and task
+              tracking.
             </p>
 
-            <a
-              href="https://github.com/Tbrainyz"
-              target="_blank"
-              className="inline-block mt-3 text-blue-400 text-sm"
-            >
-              View Project →
-            </a>
+            <div className="flex gap-4 mt-3 text-sm">
+              <a
+                href="https://fony-frontend-767q.vercel.app/"
+                target="_blank"
+                className="text-blue-400"
+              >
+                Live Demo →
+              </a>
+
+              <a
+                href="https://github.com/Tbrainyz"
+                target="_blank"
+                className="text-gray-400"
+              >
+                GitHub →
+              </a>
+            </div>
           </div>
 
-          {/* CONTACT */}
-          <div id="contact" className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6">
+          {/* CONTACT (BOOSTED CONVERSION) */}
+          <div
+            id="contact"
+            className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6"
+          >
             <h2 className="text-lg font-semibold mb-3">Hire Me</h2>
+
             <p className="text-sm opacity-80 mb-4">
-              Let’s build something great together.
+              Let’s build your website or web app today.
             </p>
 
             <a
-              href="mailto:gbadebo.wale004@gmail.com"
-              className="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm inline-block"
+              href={`mailto:gbadebo.wale004@gmail.com`}
+              className="block bg-blue-600 text-white px-4 py-2 rounded-xl text-sm text-center mb-2"
             >
               Send Email
             </a>
+
+            <a
+              href={whatsappLink}
+              className="block bg-green-500 text-white px-4 py-2 rounded-xl text-sm text-center"
+            >
+              WhatsApp Me
+            </a>
           </div>
+        </div>
+
+        {/* FOOTER (NEW - TRUST BOOSTER) */}
+        <div className="text-center text-xs opacity-50 mt-10">
+          © {new Date().getFullYear()} Gbadebo Wale • Built for freelance &
+          full-time opportunities
         </div>
       </div>
     </div>
